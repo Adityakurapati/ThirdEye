@@ -142,17 +142,25 @@ def switch_lang(lang):
     print("Current Lang"+current_lang)
     return jsonify({"message": "Lang switched successfully."})
 
-# Test To Speech
-def text_to_speech(text, filename):
-    tts = gTTS(text=text, lang='en')
-    tts.save(filename)
-
-@app.route('/tts')
-def generate_speech():
-    text = "This Is Python Audio player Output?"
-    filename = "output.wav"
+# Souond Play
+@app.route('/playsound')
+def play_sound():
+    text = "Hey How Are You"  # Replace with the text you want to convert to speech
+    filename = "output.mp3"  # Name of the output audio file
     text_to_speech(text, filename)
     return send_file(filename, as_attachment=True)
+
+@app.route('/play')
+def play():
+    text = "Your text here"  # Replace with the text you want to convert to speech
+    filename = "output.mp3"  # Name of the output audio file
+    text_to_speech(text, filename)
+    return f"""
+    <audio controls autoplay>
+        <source src="/playsound" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    """
 
 
 
