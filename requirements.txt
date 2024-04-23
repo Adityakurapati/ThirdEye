@@ -1,5 +1,5 @@
 Flask==2.1.0
-numpy==1.21.2
+numpy>=1.19.5,<1.21
 opencv-python==4.5.3.56
 easyocr==1.4.1
 gunicorn==20.1.0
